@@ -29,9 +29,9 @@ namespace calc
         }
 
         float result = 0, digitMul = 1;
-        float   lastNumber = 0, currentNumber = 0;
+        float lastNumber = 0, currentNumber = 0;
         char  currentOperand = '#';
-        bool  dot = false;
+        bool  dot = false, wasResult = false;
         
 
         private void PrintResult()
@@ -86,6 +86,7 @@ namespace calc
             currentNumber = 0;
             digitMul = 1;
             dot = false;
+            wasResult = false;
         }
 
         private void Clear()
@@ -95,15 +96,33 @@ namespace calc
             ClearCurrent();
             currentOperand = '#';
             dot = false;
+            wasResult = false;
             PrintResult();
         }
 
         private void Button_Click_Digit(object sender, RoutedEventArgs e)
         {
+            if (wasResult)
+            {
+                currentOperand = '#';
+                wasResult = false;
+            }
             int digit = (((Button)sender).Content.ToString()[0] - '0');
             digitMul = (dot ? digitMul / 10 : 1);
             currentNumber = (dot ? 1 : 10) * currentNumber + digit * digitMul;
             PrintCurrent();
+        }
+
+        private void Dot()
+        {
+            if (wasResult)
+            {
+                Clear();
+                currentOperand = '#';
+                wasResult = false;
+            }
+
+            dot = true;
         }
 
         private void Button_Click_Op(object sender, RoutedEventArgs e)
@@ -118,8 +137,10 @@ namespace calc
                 case '÷': Operand(op); break;
                 case '=': Process(); break;
                 case 'A': Clear(); break;
-                case ',': dot = true; break;
+                case ',': Dot(); break;
             }
+
+            wasResult = op == '=';
         }
 
         SolidColorBrush[] brushes = {
