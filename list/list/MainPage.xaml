@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="Tracklist by Adam" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="Tracklist App" FontSize="20" Foreground="{StaticResource titleBrush}" Margin="0,12,0,0"/>
             <TextBlock Text="Tracklist" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 

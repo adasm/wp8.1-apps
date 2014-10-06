@@ -35,10 +35,7 @@ namespace list
         public MainPage()
         {
             this.InitializeComponent();
-
             this.NavigationCacheMode = NavigationCacheMode.Required;
-
-            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
