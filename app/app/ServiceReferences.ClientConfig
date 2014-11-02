@@ -5,12 +5,19 @@
                 <binding name="lengthUnitSoap" maxBufferSize="2147483647" maxReceivedMessageSize="2147483647">
                     <security mode="None" />
                 </binding>
+                <binding name="ConvertWeightsSoap" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
             </basicHttpBinding>
         </bindings>
         <client>
             <endpoint address="http://www.webservicex.net/length.asmx" binding="basicHttpBinding"
                 bindingConfiguration="lengthUnitSoap" contract="ServiceReferenceLength.lengthUnitSoap"
                 name="lengthUnitSoap" />
+            <endpoint address="http://www.webservicex.net/ConvertWeight.asmx"
+                binding="basicHttpBinding" bindingConfiguration="ConvertWeightsSoap"
+                contract="ServiceReferenceWeight.ConvertWeightsSoap" name="ConvertWeightsSoap" />
         </client>
     </system.serviceModel>
 </configuration>

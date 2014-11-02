@@ -28,9 +28,11 @@
 
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel Grid.Row="0">
-                <TextBlock Text="Input Distance Value"/>
+                <TextBlock Text="Converter Type"/>
+                <toolkit:ListPicker x:Name="ConverterType" HorizontalAlignment="Stretch" SelectionChanged="ConverterType_SelectionChanged"/>
+                <TextBlock Text="Input Value"/>
                 <TextBox Name="InputValue" InputScope="Number" />
-                <TextBlock Text="Distance Unit"/>
+                <TextBlock Text="Input Unit -> Output Unit"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -41,10 +43,10 @@
                     <TextBlock Grid.Column="1" Text="->" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <toolkit:ListPicker Grid.Column="2" x:Name="OutputUnit" HorizontalAlignment="Stretch"/>
                 </Grid>
-                <TextBlock Text="Output Distance Value"/>
+                <TextBlock Text="Output Value"/>
                 <TextBox IsEnabled="False" Name="OutputValue" InputScope="Number" />
-                <Button Content="Convert Distance" Click="ButtonDistance_Click"/>
-                   
+                <Button Content="Convert" Click="Button_Click"/>
+
             </StackPanel>
         </Grid>
 

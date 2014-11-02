@@ -14,6 +14,10 @@ namespace app
     public partial class MainPage : PhoneApplicationPage
     {
         ServiceReferenceLength.lengthUnitSoapClient lengthClient = new ServiceReferenceLength.lengthUnitSoapClient();
+        ServiceReferenceWeight.ConvertWeightsSoapClient weightClient = new ServiceReferenceWeight.ConvertWeightsSoapClient();
+
+        private static string converterDistanceName = "Distance";
+        private static string converterWeightName = "Weight";
 
         // Constructor
         public MainPage()
@@ -23,25 +27,71 @@ namespace app
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
 
-            foreach (var unit in Enum.GetNames(typeof(ServiceReferenceLength.Lengths))) {
-                InputUnit.Items.Add(unit);
-                OutputUnit.Items.Add(unit);
+            ConverterType.Items.Add(converterDistanceName);
+            ConverterType.Items.Add(converterWeightName);
+        }
+
+        private void ConverterType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            InputUnit.Items.Clear();
+            OutputUnit.Items.Clear();
+
+            if (ConverterType.SelectedItem.ToString().Equals(converterDistanceName))
+            {
+                foreach (var unit in Enum.GetNames(typeof(ServiceReferenceLength.Lengths)))
+                {
+                    //if (unit.Equals("Meters") || unit.Equals("Kilometers"))
+                    {
+                        InputUnit.Items.Add(unit);
+                        OutputUnit.Items.Add(unit);
+                    }
+                }
+            }
+            else if (ConverterType.SelectedItem.ToString().Equals(converterWeightName))
+            {
+                foreach (var unit in Enum.GetNames(typeof(ServiceReferenceWeight.WeightUnit)))
+                {
+                    //if (unit.Equals("Meters") || unit.Equals("Kilometers"))
+                    {
+                        InputUnit.Items.Add(unit);
+                        OutputUnit.Items.Add(unit);
+                    }
+                }
+            }
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (ConverterType.SelectedItem.ToString().Equals(converterDistanceName))
+            {
+                ServiceReferenceLength.Lengths inputUnit = (ServiceReferenceLength.Lengths)Enum.Parse(typeof(ServiceReferenceLength.Lengths), InputUnit.SelectedItem.ToString()),
+                                outputUnit = (ServiceReferenceLength.Lengths)Enum.Parse(typeof(ServiceReferenceLength.Lengths), OutputUnit.SelectedItem.ToString());
+
+                lengthClient.ChangeLengthUnitCompleted += lengthClient_ChangeLengthUnitCompleted;
+                lengthClient.ChangeLengthUnitAsync(double.Parse(InputValue.Text), inputUnit, outputUnit);
+            }
+            else if (ConverterType.SelectedItem.ToString().Equals(converterWeightName))
+            {
+                ServiceReferenceWeight.WeightUnit inputUnit = (ServiceReferenceWeight.WeightUnit)Enum.Parse(typeof(ServiceReferenceWeight.WeightUnit), InputUnit.SelectedItem.ToString()),
+                               outputUnit = (ServiceReferenceWeight.WeightUnit)Enum.Parse(typeof(ServiceReferenceWeight.WeightUnit), OutputUnit.SelectedItem.ToString());
+
+                weightClient.ConvertWeightCompleted += weightClient_ConvertWeightCompleted;
+                weightClient.ConvertWeightAsync(double.Parse(InputValue.Text), inputUnit, outputUnit);
             }
         }
 
-        private void ButtonDistance_Click(object sender, RoutedEventArgs e)
+        private void weightClient_ConvertWeightCompleted(object sender, ServiceReferenceWeight.ConvertWeightCompletedEventArgs e)
         {
-            ServiceReferenceLength.Lengths inputUnit = (ServiceReferenceLength.Lengths)Enum.Parse(typeof(ServiceReferenceLength.Lengths), InputUnit.SelectedItem.ToString()),
-                                outputUnit = (ServiceReferenceLength.Lengths)Enum.Parse(typeof(ServiceReferenceLength.Lengths), OutputUnit.SelectedItem.ToString());
-
-            lengthClient.ChangeLengthUnitCompleted += lengthClient_ChangeLengthUnitCompleted;
-            lengthClient.ChangeLengthUnitAsync(double.Parse(InputValue.Text), inputUnit, outputUnit);
+            OutputValue.Text = e.Result.ToString();
         }
 
         private void lengthClient_ChangeLengthUnitCompleted(object sender, ServiceReferenceLength.ChangeLengthUnitCompletedEventArgs e)
         {
             OutputValue.Text = e.Result.ToString();
         }
+
+        
 
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
