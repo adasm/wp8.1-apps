@@ -118,9 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="cancel" xml:space="preserve">
-    <value>4324</value>
+    <value>Cancel</value>
+  </data>
+  <data name="location.Header" xml:space="preserve">
+    <value>Location</value>
   </data>
   <data name="search" xml:space="preserve">
-    <value>Search43242</value>
+    <value>Search</value>
+  </data>
+  <data name="searchDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="searchDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="searchDialog.Title" xml:space="preserve">
+    <value>Search</value>
   </data>
 </root>

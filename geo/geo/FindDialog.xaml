@@ -6,13 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="Search"
-    PrimaryButtonText="Search"  
-    SecondaryButtonText="Cancel"
+    x:Uid="searchDialog"
+    Title=""
+    PrimaryButtonText=""  
+    SecondaryButtonText=""
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <TextBox Name="Location" Header="Location"/>
+        <TextBox Style="{StaticResource LocationTextBox}" x:Uid="location" Name="Location"/>
     </StackPanel>
 </ContentDialog>

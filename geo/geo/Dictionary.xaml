@@ -3,14 +3,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:geo">
     
-    <Style TargetType="TextBlock" x:Name="YellowTextBlock" x:Key="YellowTextBlock">
-        <Setter Property="Foreground" Value="Yellow" />
-        <Setter Property="Width" Value="100"/>
+    <Style TargetType="CommandBar" x:Name="CommandBarPurple" x:Key="CommandBarPurple">
+        <Setter Property="Foreground" Value="#FF5AC85A" />
+        <Setter Property="Background" Value="#FF14145A" />
     </Style>
 
-    <Style TargetType="TextBox" x:Name="NumericTextBox" x:Key="NumericTextBox">
-        <Setter Property="InputScope" Value="Number" />
-        <Setter Property="Width" Value="80"/>
+    <Style TargetType="AppBarButton" x:Name="AppBarButtonGPS" x:Key="AppBarButtonGPS">
+        <Setter Property="Icon" Value="Globe" />
     </Style>
 
+    <Style TargetType="AppBarButton" x:Name="AppBarButtonSearch" x:Key="AppBarButtonSearch">
+        <Setter Property="Icon" Value="Find" />
+    </Style>
+
+    <Style TargetType="TextBox" x:Name="LocationTextBox" x:Key="LocationTextBox">
+        <Setter Property="InputScope" Value="Default" />
+        <Setter Property="Background" Value="WhiteSmoke" />
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
 </ResourceDictionary>

@@ -28,9 +28,11 @@ namespace geo
         {
             this.InitializeComponent();
 
-            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            PrimaryButtonText = loader.GetString("search");
-            SecondaryButtonText = loader.GetString("cancel");
+            //var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            //Title = loader.GetString("search");
+            //PrimaryButtonText = loader.GetString("search");
+            //SecondaryButtonText = loader.GetString("cancel");
+            //Location.Header = loader.GetString("location");
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

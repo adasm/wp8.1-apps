@@ -9,15 +9,13 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarButton Icon="World" Label="GPS" Click="ButtonGPS_OnClick" />
-            <AppBarButton Icon="Find" Label="Search" Click="ButtonFind_OnClick" />
+        <CommandBar Style="{StaticResource CommandBarPurple}">
+            <AppBarButton Style="{StaticResource AppBarButtonGPS}" Click="ButtonGPS_OnClick" />
+            <AppBarButton Style="{StaticResource AppBarButtonSearch}" Click="ButtonFind_OnClick" />
         </CommandBar>
     </Page.BottomAppBar>
 
     <Grid>
-
         <Maps:MapControl x:Name="Map" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" />
-
     </Grid>
 </Page>
