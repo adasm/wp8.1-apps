@@ -13,6 +13,8 @@ namespace app
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        ServiceReferenceLength.lengthUnitSoapClient lengthClient = new ServiceReferenceLength.lengthUnitSoapClient();
+
         // Constructor
         public MainPage()
         {
@@ -20,6 +22,25 @@ namespace app
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
+
+            foreach (var unit in Enum.GetNames(typeof(ServiceReferenceLength.Lengths))) {
+                InputUnit.Items.Add(unit);
+                OutputUnit.Items.Add(unit);
+            }
+        }
+
+        private void ButtonDistance_Click(object sender, RoutedEventArgs e)
+        {
+            ServiceReferenceLength.Lengths inputUnit = (ServiceReferenceLength.Lengths)Enum.Parse(typeof(ServiceReferenceLength.Lengths), InputUnit.SelectedItem.ToString()),
+                                outputUnit = (ServiceReferenceLength.Lengths)Enum.Parse(typeof(ServiceReferenceLength.Lengths), OutputUnit.SelectedItem.ToString());
+
+            lengthClient.ChangeLengthUnitCompleted += lengthClient_ChangeLengthUnitCompleted;
+            lengthClient.ChangeLengthUnitAsync(double.Parse(InputValue.Text), inputUnit, outputUnit);
+        }
+
+        private void lengthClient_ChangeLengthUnitCompleted(object sender, ServiceReferenceLength.ChangeLengthUnitCompletedEventArgs e)
+        {
+            OutputValue.Text = e.Result.ToString();
         }
 
         // Sample code for building a localized ApplicationBar
