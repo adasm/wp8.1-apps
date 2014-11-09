@@ -43,11 +43,10 @@ namespace geo
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var cul = "pl-PL";
-            var cultureInfo = new CultureInfo(cul);
-            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
-            
-            Debug.WriteLine(CultureInfo.CurrentCulture.ToString());
+            //var cul = "pl-PL";
+            //var cultureInfo = new CultureInfo(cul);
+            //CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+            //Debug.WriteLine(CultureInfo.CurrentCulture.ToString());
 
         }
 

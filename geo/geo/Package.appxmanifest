@@ -16,7 +16,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="geo.App">
-      <m3:VisualElements DisplayName="geo" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="geo" ForegroundText="light" BackgroundColor="transparent">
+      <m3:VisualElements DisplayName="ApplicationTitle" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="geo" ForegroundText="light" BackgroundColor="transparent">
         <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
         </m3:DefaultTile>
         <m3:SplashScreen Image="Assets\SplashScreen.png" />
