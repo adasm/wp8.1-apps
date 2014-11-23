@@ -38,7 +38,7 @@ namespace database.Model
         [Column(CanBeNull = false)]
         public float SredniaOcen;
 
-        EntitySet<Zaliczenie> _Zaliczenia;
+        private EntitySet<Zaliczenie> _Zaliczenia;
         [Association(Name = "FK_Studenci_Zaliczenia", Storage = "_Zaliczenia", OtherKey = "ZaliczenieId", ThisKey = "Indeks", IsForeignKey = true, DeleteOnNull = false)]
         public EntitySet<Zaliczenie> Zaliczenia;
 
